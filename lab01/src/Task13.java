@@ -1,22 +1,31 @@
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Task13 {
-    public static int[] removeLocalMaxima(int[] arr) {
-        ArrayList<Integer> list = new ArrayList<>();
+    public static void main(String[] args) {
+        int[] input = {18, 1, 3, 6, 7, -5};
+        int[] result = removeLocalMaxima(input);
+        System.out.println(Arrays.toString(result));
+    }
 
-        for (int i = 0; i < arr.length; i++) {
-            if (i > 0 && i < arr.length - 1 &&
-                    arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
-                continue;
+    public static int[] removeLocalMaxima(int[] array) {
+        boolean[] isMax = new boolean[array.length];
+        int countMax = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            boolean leftOk = (i == 0) || (array[i] > array[i - 1]);
+            boolean rightOk = (i == array.length - 1) || (array[i] > array[i + 1]);
+
+            if (leftOk && rightOk) {
+                isMax[i] = true;
+                countMax++;
             }
-            list.add(arr[i]);
         }
 
-        int[] result = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            result[i] = list.get(i);
+        int[] result = new int[array.length - countMax];
+        int index = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (!isMax[i]) result[index++] = array[i];
         }
-
         return result;
     }
 }

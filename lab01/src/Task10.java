@@ -1,9 +1,14 @@
 public class Task10 {
-    public static int max(int[] arr) {
-        int max = arr[0];
-        for (int x : arr) {
-            if (x > max) max = x;
+    public static void main(String[] args) {
+        int[] array = {1, 5, 3, 9, 2};
+        System.out.println(max(array)); // Має вивести 9
+    }
+
+    public static int max(int[] array) {
+        int maxValue = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > maxValue) maxValue = array[i];
         }
-        return max;
+        return maxValue;
     }
 }
