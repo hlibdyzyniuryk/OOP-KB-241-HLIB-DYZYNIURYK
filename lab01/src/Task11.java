@@ -1,7 +1,7 @@
 public class Task11 {
     public static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 5, 6};
-        System.out.println(sum(array)); // Має вивести 12 (2+4+6)
+        System.out.println(sum(array));
     }
 
     public static int sum(int[] array) {
